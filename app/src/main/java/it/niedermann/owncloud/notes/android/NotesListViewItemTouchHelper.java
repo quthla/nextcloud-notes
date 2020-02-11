@@ -44,13 +44,13 @@ public class NotesListViewItemTouchHelper extends ItemTouchHelper {
              * @param recyclerView RecyclerView
              * @param viewHolder   RecyclerView.ViewHoler
              * @return 0 if section, otherwise super()
-             
+            */             
             @Override
             public int getSwipeDirs(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-                if (viewHolder instanceof ItemAdapter.SectionViewHolder) return 0;
+                // if (viewHolder instanceof ItemAdapter.SectionViewHolder) return 0;
                 return super.getSwipeDirs(recyclerView, viewHolder);
             }
-*/
+
             /**
              * Delete note if note is swiped to left or right
              *
@@ -87,24 +87,24 @@ public class NotesListViewItemTouchHelper extends ItemTouchHelper {
                 }
             }
 
-            @Override
+/*            @Override
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 ItemAdapter.NoteViewHolder noteViewHolder = (ItemAdapter.NoteViewHolder) viewHolder;
                 // show swipe icon on the side
                 noteViewHolder.showSwipe(dX > 0);
                 // move only swipeable part of item (not leave-behind)
                 getDefaultUIUtil().onDraw(c, recyclerView, noteViewHolder.noteSwipeable, dX, dY, actionState, isCurrentlyActive);
-            }
+            }*/
 
 //            @Override
 //            public float getSwipeEscapeVelocity(float defaultValue) {
 //                return defaultValue * 3;
 //            }
 
-            @Override
+/*            @Override
             public void clearView(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
                 getDefaultUIUtil().clearView(((ItemAdapter.NoteViewHolder) viewHolder).noteSwipeable);
-            }
+            }*/
         });
     }
 }
