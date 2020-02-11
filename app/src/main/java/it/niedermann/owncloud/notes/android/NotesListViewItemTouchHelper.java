@@ -96,10 +96,10 @@ public class NotesListViewItemTouchHelper extends ItemTouchHelper {
                 getDefaultUIUtil().onDraw(c, recyclerView, noteViewHolder.noteSwipeable, dX, dY, actionState, isCurrentlyActive);
             }
 
-            @Override
-            public float getSwipeEscapeVelocity(float defaultValue) {
-                return defaultValue * 3;
-            }
+//            @Override
+//            public float getSwipeEscapeVelocity(float defaultValue) {
+//                return defaultValue * 3;
+//            }
 
             @Override
             public void clearView(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
