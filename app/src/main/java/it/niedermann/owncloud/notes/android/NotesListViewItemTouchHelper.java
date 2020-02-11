@@ -44,13 +44,13 @@ public class NotesListViewItemTouchHelper extends ItemTouchHelper {
              * @param recyclerView RecyclerView
              * @param viewHolder   RecyclerView.ViewHoler
              * @return 0 if section, otherwise super()
-             */
+             
             @Override
             public int getSwipeDirs(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
                 if (viewHolder instanceof ItemAdapter.SectionViewHolder) return 0;
                 return super.getSwipeDirs(recyclerView, viewHolder);
             }
-
+*/
             /**
              * Delete note if note is swiped to left or right
              *
