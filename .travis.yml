@@ -9,7 +9,31 @@ android:
     - android-29
     - extra-android-m2repository
 
-before_install:
-    - yes | sdkmanager "platforms;android-29"
+before_script:
+  - yes | sdkmanager "platforms;android-29"
+  # Create keystore by running:
+  #   keytool -genkey -v -keystore debug.keystore -storepass android \
+  #     -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 \
+  #     -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+  #
+  # Then base64 encode it with:
+  #   base64 -w0 debug.keystore
+  #
+  # Then add this to Travis environment variables as DEBUG_KEYSTORE (make sure
+  # not to enable displaying value in build logs)"
+  - test -n "$DEBUG_KEYSTORE"
+    && echo "$DEBUG_KEYSTORE" | base64 -d > $HOME/.android/debug.keystore
+    || true
 
-script: ./gradlew testDebug
+script: ./gradlew assembleDebug
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  overwrite: true
+  api-key: $GITHUB_API_KEY
+  file_glob: true
+  file: app/build/outputs/apk/*/*.apk
+  on:
+    # all_branches: true
+    tags: true
